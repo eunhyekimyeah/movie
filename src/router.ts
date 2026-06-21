@@ -1,6 +1,7 @@
 import { createRootRoute, createRoute, createRouter } from '@tanstack/react-router'
 import App from './App'
 import MovieSearchPage from './pages/MovieSearchPage'
+import LoginPage from './pages/LoginPage'
 import type { SearchParams } from './types/movie'
 
 const VALID_LANGUAGES: SearchParams['language'][] = ['ko-KR', 'en-US', 'ja-JP']
@@ -22,7 +23,13 @@ const indexRoute = createRoute({
   }),
 })
 
-const routeTree = rootRoute.addChildren([indexRoute])
+const loginRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/login',
+  component: LoginPage,
+})
+
+const routeTree = rootRoute.addChildren([indexRoute, loginRoute])
 
 export const router = createRouter({ routeTree })
 
