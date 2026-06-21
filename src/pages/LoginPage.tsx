@@ -4,7 +4,7 @@ export default function LoginPage() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = () => {
     console.log('로그인 시도:', { email, password });
   }
 
